@@ -1,0 +1,71 @@
+    <div id="results">
+        <h2>Trip Details</h2>
+        <div id="tripDetails">
+            <div class="trip-summary" style="display: none;">
+                <h3>Trip Summary</h3>
+                <div class="summary-item">
+                    <strong>From:</strong> <span id="summary-start"></span>
+                </div>
+                <div class="summary-item">
+                    <strong>To:</strong> <span id="summary-destination"></span>
+                </div>
+                <div class="summary-item">
+                    <strong>Transport Mode:</strong> <span id="summary-mode"></span>
+                </div>
+                <div class="summary-item">
+                    <strong>Departure:</strong> <span id="summary-departure"></span>
+                </div>
+                <div class="summary-item">
+                    <strong>Estimated Duration:</strong> <span id="summary-duration"></span>
+                </div>
+                <div class="summary-item">
+                    <strong>Estimated Distance:</strong> <span id="summary-distance"></span>
+                </div>
+            </div>
+            
+            <div class="route-details" style="display: none;">
+                <h3>Route Instructions</h3>
+                <ol id="route-steps"></ol>
+            </div>
+            
+            <div class="weather-info" style="display: none;">
+                <h3>Weather Forecast</h3>
+                <div id="weather-details"></div>
+            </div>
+            
+            <div class="additional-info" style="display: none;">
+                <h3>Additional Information</h3>
+                <div id="traffic-alerts"></div>
+                <div id="transit-updates"></div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .trip-summary, .route-details, .weather-info, .additional-info {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: z#fffdfd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .summary-item {
+            margin: 10px 0;
+        }
+        
+        #route-steps li {
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+        
+        .weather-info {
+            background-color: #f0f8ff;
+        }
+        
+        .additional-info {
+            background-color: #fff5f5;
+        }
+    </style>
+
+    <script src="tripPlanner.js"></script>

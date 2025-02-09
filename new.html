@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner Inputs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('NEE.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .input-card {
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            background-color: #f4b942;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid rgba(244, 185, 66, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #f4b942;
+        }
+
+        .member-inputs {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .add-member-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-btn {
+            background-color: #f4b942;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn:hover {
+            background-color: #e5aa35;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        /* Add order classes for box positioning */
+        .box-right {
+            grid-column: 2;
+        }
+
+        .box-left {
+            grid-column: 1;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                background-attachment: scroll;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;  /* Stack on mobile */
+                padding: 10px;
+            }
+            
+            .box-right, .box-left {
+                grid-column: auto;  /* Reset grid column on mobile */
+            }
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .first-page {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .second-page {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .input-card {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .submit-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .submit-btn {
+            max-width: 300px;
+            width: 100%;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background-color: #f4b942;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .page {
+                padding: 20px 10px;
+            }
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group:last-child {
+            margin-bottom: 0;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid rgba(33, 147, 176, 0.3);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+
+        input[type="date"]:focus {
+            border-color: #2193b0;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(33, 147, 176, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid rgba(244, 185, 66, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.95);
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #f4b942;
+        }
+
+        .remove-member-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body data-page="new">
+    <form id="tripForm">
+        <div class="page" id="page1">
+            <div class="container first-page">
+                <!-- Basic Information -->
+                <div class="input-card">
+                    <div class="card-header">Basic Information</div>
+                    <div class="card-content">
+                        <div class="input-group">
+                            <label for="mainContact">Main Contact Name</label>
+                            <input type="text" id="mainContact" maxlength="100" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="currentLocation">Current Location</label>
+                            <select id="currentLocation" required>
+                                <option value="">Select your current location</option>
+                                <option value="USA">United States</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                                <option value="India">India</option>
+                                <option value="China">China</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Germany">Germany</option>
+                                <option value="France">France</option>
+                                <option value="Italy">Italy</option>
+                                <!-- Add more countries as needed -->
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Group Members</label>
+                            <div id="membersList" class="member-inputs">
+                                <div class="member-input">
+                                    <input type="text" placeholder="Enter member name" maxlength="100">
+                                    <button type="button" class="remove-member-btn" onclick="removeMember(this)">Remove</button>
+                                </div>
+                            </div>
+                            <button type="button" class="add-member-btn">+ Add Member</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trip Details -->
+                <div class="input-card">
+                    <div class="card-header">Trip Details</div>
+                    <div class="card-content">
+                        <div class="grid-2">
+                            <div class="input-group">
+                                <label for="budget">Budget ($)</label>
+                                <input type="number" id="budget" min="0" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="duration">Duration (days)</label>
+                                <input type="number" id="duration" min="1" step="1" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="destinations">Preferred Destination</label>
+                            <select id="destinations" required>
+                                <option value="">Select your destination</option>
+                                <!-- Domestic -->
+                                <option value="kuala lumpur">Kuala Lumpur</option>
+                                <option value="penang">Penang</option>
+                                <option value="malacca">Malacca</option>
+                                <option value="johor bahru">Johor Bahru</option>
+                                <option value="ipoh">Ipoh</option>
+                                <option value="kuching">Kuching</option>
+                                <option value="kota kinabalu">Kota Kinabalu</option>
+                                <option value="langkawi">Langkawi</option>
+                                <option value="cameron highlands">Cameron Highlands</option>
+                                <!-- International -->
+                                <option value="bangkok">Bangkok, Thailand</option>
+                                <option value="singapore">Singapore</option>
+                                <option value="bali">Bali, Indonesia</option>
+                                <option value="tokyo">Tokyo, Japan</option>
+                                <option value="seoul">Seoul, South Korea</option>
+                                <option value="paris">Paris, France</option>
+                                <option value="london">London, UK</option>
+                            </select>
+                        </div>
+                        <div class="grid-2">
+                            <div class="input-group">
+                                <label for="startDate">Start Date</label>
+                                <input type="date" id="startDate" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="weather">Weather Preference</label>
+                                <select id="weather" required>
+                                    <option value="">Select weather preference</option>
+                                    <option value="sunny">Sunny</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="cold">Cold</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" class="nav-btn" onclick="showPage(2)">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="page2" style="display: none;">
+            <div class="container second-page">
+                <!-- Preferences -->
+                <div class="input-card">
+                    <div class="card-header">Preferences</div>
+                    <div class="card-content">
+                        <div class="grid-2">
+                            <div class="input-group">
+                                <label for="food">Food Preference</label>
+                                <select id="food" required>
+                                    <option value="">Select food preference</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="non-vegetarian">Non-vegetarian</option>
+                                    <option value="both">Both</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="accommodation">Accommodation</label>
+                                <select id="accommodation" required>
+                                    <option value="">Select accommodation type</option>
+                                    <option value="hotel">Hotel</option>
+                                    <option value="resort">Resort</option>
+                                    <option value="homestay">Homestay</option>
+                                    <option value="camping">Camping</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="input-card">
+                    <div class="card-header">Additional Information</div>
+                    <div class="card-content">
+                        <div class="input-group">
+                            <label for="specialRequests">Special Requests</label>
+                            <textarea id="specialRequests" rows="4" placeholder="Any special requirements or preferences..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" class="nav-btn" onclick="showPage(1)">← Back</button>
+                </div>
+
+                <div class="submit-wrapper">
+                
+                    <button type="submit" class="submit-btn" >Plan your trip</button>
+
+                    <!-- <button type="submit" class="submit-btn" onclick="onSubmit()">print</button> -->
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <script src="new.js"></script>
+  
+</body>
+</html>

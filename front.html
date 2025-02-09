@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time to Travel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('bg.jpeg') no-repeat center center fixed;
+            background-size: 100% 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Add overlay for the white curved bottom */
+        .curved-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;  /* Adjust based on your needs */
+            background: white;
+            clip-path: path('M0,100 C150,0 350,0 500,100 L500,200 L0,200 Z');
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Header arrows and planes */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .arrow-left, .arrow-right {
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .airplane {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        /* Content styling */
+        .main-content {
+            padding-top: 40px;
+        }
+
+        .main-title {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .travel-text {
+            font-size: 6em;
+            color: #A8E0FF;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .image-circle {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+        }
+
+        .image-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Book Now Button */
+        .book-now {
+            background-color: #0A3847;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            border: 2px solid white;
+            cursor: pointer;
+            margin: 30px 0;
+            transition: all 0.3s ease;
+        }
+
+        .book-now:hover {
+            background-color: #155769;
+        }
+
+        /* Website Links */
+        .website-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .website-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add the curved overlay -->
+    <div class="curved-overlay"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="arrow-left">
+                ≫≫≫≫≫≫
+                <svg class="airplane" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z"/>
+                </svg>
+            </div>
+            <div class="arrow-right">
+                <svg class="airplane" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z"/>
+                </svg>
+                ≪≪≪≪≪≪
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h1 class="main-title">WELCOME TO</h1>
+            <div class="travel-text">BOUNDLESS BREEZE</div>
+            <p class="subtitle">Travel broadens the mind and opens the door to new experiences.</p>
+
+            <div class="image-gallery">
+                <div class="image-circle">
+                    <img src="insert1.jpeg" alt= Resort">
+                </div>
+                <div class="image-circle">
+                    <img src="insert2.jpeg" alt="Mountain View">
+                </div>
+                <div class="image-circle">
+                    <img src="insert3.jpeg" alt="Beach View">
+                </div>
+            </div>
+
+            <button class="book-now" onclick="window.location.href='new.html'">BOOK NOW</button>
+
+            <div class="website-links">
+                <a href="#" class="website-link">
+                    <img src="phone-icon.png" alt="Phone" class="icon">
+                    www.reallygreatsite.com
+                </a>
+                <a href="#" class="website-link">
+                    <img src="globe-icon.png" alt="Globe" class="icon">
+                    www.reallygreatsite.com
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="connect.js"></script>
+</body>
+</html> 

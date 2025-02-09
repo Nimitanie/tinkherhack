@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="again.js"></script>
+    <title>Your Trip Plan</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+
+        .trip-plan {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #1a2a6c;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .trip-details {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .trip-details:hover {
+            transform: translateY(-5px);
+        }
+
+        .day-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .activity-card {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-left: 4px solid #1a2a6c;
+            border-radius: 4px;
+        }
+
+        .activity-time {
+            font-weight: bold;
+            color: #1a2a6c;
+        }
+
+        .budget-info {
+            background: linear-gradient(45deg, #2193b0, #6dd5ed);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .print-btn {
+            background: linear-gradient(45deg, #fdbb2d, #f4b942);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(244,185,66,0.3);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            .trip-plan {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="trip-plan">
+        <div class="header">
+            <h1>Your Trip Plan</h1>
+        </div>
+
+        <div id="tripDetails" class="trip-details">
+            <!-- Trip details will be populated here -->
+        </div>
+
+        <div id="activities">
+            <!-- Activities will be populated here -->
+        </div>
+
+        <button onclick="window.print()" class="print-btn">Print Trip Plan</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get trip plan from session storage
+            const tripPlan = JSON.parse(sessionStorage.getItem('finalTripPlan'));
+            
+            if (tripPlan) {
+                // Populate trip details
+                document.getElementById('tripDetails').innerHTML = `
+                    <h2>Trip Overview</h2>
+                    <p><strong>Main Contact:</strong> ${tripPlan.mainContact}</p>
+                    <p><strong>Destination:</strong> ${tripPlan.destinations}</p>
+                    <p><strong>Start Date:</strong> ${tripPlan.startDate}</p>
+                    <p><strong>Duration:</strong> ${tripPlan.duration} days</p>
+                    <p><strong>Number of Travelers:</strong> ${tripPlan.numTravelers}</p>
+                    <div class="budget-info">
+                        <h3>Budget Information</h3>
+                        <p>Total Budget: $${tripPlan.budget}</p>
+                        
+                    </div>
+                `;
+
+                // Populate activities
+                const activitiesContainer = document.getElementById('activities');
+                tripPlan.activities.forEach(day => {
+                    const daySection = document.createElement('div');
+                    daySection.className = 'day-section';
+                    daySection.innerHTML = `
+                        <h3>Day ${day.day}</h3>
+                        <div class="activity-card">
+                            <span class="activity-time">Morning:</span>
+                            <p>${day.morning}</p>
+                        </div>
+                        <div class="activity-card">
+                            <span class="activity-time">Afternoon:</span>
+                            <p>${day.afternoon}</p>
+                        </div>
+                        <div class="activity-card">
+                            <span class="activity-time">Evening:</span>
+                            <p>${day.evening}</p>
+                        </div>
+                        <p><strong>Estimated Daily Cost:</strong> $${day.estimatedCost.toFixed(2)}</p>
+                    `;
+                    activitiesContainer.appendChild(daySection);
+                });
+            } else {
+                document.querySelector('.trip-plan').innerHTML = `
+                    <div class="header">
+                        <h1>No Trip Plan Found</h1>
+                        <p>Please create a new trip plan.</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #4287f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .planner-container {
+            background-color: white;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .planner-header {
+            background-color: #f4b942;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .calendar-icon {
+            background-color: white;
+            border-radius: 8px;
+            padding: 8px;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .planner-title {
+            color: white;
+            font-size: 1.8em;
+        }
+
+        .form-content {
+            padding: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #f4b942;
+        }
+
+        .members-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .add-member-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-btn {
+            background-color: #f4b942;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e5aa35;
+        }
+
+        .preferences-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="planner-container">
+        <div class="planner-header">
+            <div class="calendar-icon">
+                <i class="fas fa-calendar"></i>
+            </div>
+            <div class="planner-title">Trip Planner</div>
+        </div>
+
+        <form class="form-content">
+            <div class="form-section">
+                <h2>Basic Information</h2>
+                <div class="form-group">
+                    <label for="mainContact">Main Contact Name</label>
+                    <input type="text" id="mainContact" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Group Members</label>
+                    <div class="members-container" id="membersContainer">
+                        <!-- Dynamic member inputs will be added here -->
+                    </div>
+                    <button type="button" class="add-member-btn">+ Add Member</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Trip Preferences</h2>
+                <div class="preferences-grid">
+                    <div class="form-group">
+                        <label for="budget">Budget ($)</label>
+                        <input type="number" id="budget" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destinations">Preferred Destinations</label>
+                        <input type="text" id="destinations" placeholder="Separate with commas">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="accommodation">Accommodation</label>
+                        <select id="accommodation">
+                            <option value="hotel">Hotel</option>
+                            <option value="resort">Resort</option>
+                            <option value="homestay">Homestay</option>
+                            <option value="camping">Camping</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transportation">Transportation</label>
+                        <select id="transportation">
+                            <option value="air">Air Travel</option>
+                            <option value="road">Road Travel</option>
+                            <option value="water">Water Travel</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Plan My Trip</button>
+        </form>
+    </div>
+</body>
+</html> 
